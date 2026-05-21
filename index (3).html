@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Polyglot Academy - Escuela de idiomas en Villahermosa, Tabasco. Aprende inglés, francés, alemán y más.">
+    <meta name="author" content="Polyglot Academy">
+    <meta name="keywords" content="escuela de idiomas, inglés, francés, alemán, Villahermosa, Tabasco, cursos de idiomas">
+    <meta name="theme-color" content="#007bff">
+    <title>Polyglot Academy - Escuela de Idiomas</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Íconos Flaticon -->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-straight/css/uicons-bold-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="estilos_maquetacion.css">
+
+    <style>
+        /* ============================================================
+           ESTILOS DEL BANNER
+        ============================================================ */
+        .mainBanner {
+            width: 100%;
+            height: 450px;
+            position: relative;
+        }
+        .mainBanner .swiper-slide {
+            position: relative;
+            overflow: hidden;
+        }
+        .mainBanner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+        .banner-link {
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .banner-link:hover img {
+            transform: scale(1.05);
+        }
+        .banner-content {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 40px 5%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 40%);
+            box-sizing: border-box;
+        }
+        .text-box { color: white; max-width: 80%; }
+        .text-box h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            line-height: 1.2;
+            font-weight: 600;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+        @media (max-width: 768px) {
+            .mainBanner { height: 300px; }
+            .text-box h1 { font-size: 1.5rem; }
+            .banner-content { padding: 20px 5%; }
+        }
+        .swiper-pagination-bullet-active { background: var(--color-primario) !important; }
+        .swiper-button-next, .swiper-button-prev {
+            color: white !important;
+            background: rgba(0,0,0,0.3);
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 50%;
+            backdrop-filter: blur(4px);
+        }
+        .swiper-button-next::after,
+        .swiper-button-prev::after { font-size: 16px !important; font-weight: 800; }
+
+        /* ============================================================
+           ESTILOS GENERALES DE SECCIÓN
+        ============================================================ */
+        .tag {
+            display: inline-block;
+            background: #eef4ff;
+            color: var(--color-primario);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .cuadro-grande h3 { font-size: 1.2rem; color: var(--color-oscuro); margin-bottom: 8px; }
+        .cuadro-pequeno h4 { font-size: 1rem; color: var(--color-oscuro); margin-bottom: 5px; margin-top: 5px; }
+        .cuadro-pequeno p { font-size: 0.85rem; color: #888; }
+        .fecha-evento {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 0.82rem; color: #999; margin-top: 6px;
+        }
+        .fecha-evento::before { content: "📅"; }
+        .leer-mas {
+            display: inline-flex; align-items: center; gap: 5px;
+            margin-top: 15px; color: var(--color-primario);
+            text-decoration: none; font-weight: 600; font-size: 0.88rem;
+            transition: gap 0.2s ease;
+        }
+        .leer-mas::after { content: "→"; }
+        .leer-mas:hover { gap: 10px; }
+        .hero-intro {
+            padding: 70px 0 20px;
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 10px;
+        }
+        .hero-intro h1 { font-size: 2.8rem; font-weight: 700; color: var(--color-oscuro); margin-bottom: 15px; line-height: 1.2; }
+        .hero-intro h1 span { color: var(--color-primario); }
+        .hero-intro p { font-size: 1.1rem; max-width: 580px; color: #666; line-height: 1.7; }
+        .imagen-placeholder {
+            width: 100%; height: 200px;
+            background: linear-gradient(135deg, #e8f0fe, #d0e4ff);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: #90b0e0; font-size: 0.85rem; font-weight: 500;
+            margin-bottom: 15px; overflow: hidden;
+        }
+        .imagen-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+        .seccion-info { padding: 60px 0; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .cuadro { animation: fadeUp 0.5s ease both; }
+        .contenedor-dos .cuadro:nth-child(1) { animation-delay: 0.1s; }
+        .contenedor-dos .cuadro:nth-child(2) { animation-delay: 0.2s; }
+        .contenedor-tres .cuadro:nth-child(1) { animation-delay: 0.1s; }
+        .contenedor-tres .cuadro:nth-child(2) { animation-delay: 0.2s; }
+        .contenedor-tres .cuadro:nth-child(3) { animation-delay: 0.3s; }
+        .logo-texto { font-size: 1.4rem; font-weight: 700; color: var(--color-primario); letter-spacing: -0.5px; }
+
+        /* ============================================================
+           REDES SOCIALES — BOTONES FLOTANTES
+        ============================================================ */
+        .redes-flotantes {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 9999;
+        }
+        .btn-flotante {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-flotante:hover {
+            transform: scale(1.15) translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .btn-whatsapp { background: #25D366; }
+        .btn-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+        .btn-facebook  { background: #1877F2; }
+
+        /* Tooltip al pasar el mouse */
+        .btn-flotante span {
+            position: absolute;
+            right: 62px;
+            background: #333;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 5px 10px;
+            border-radius: 6px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .btn-flotante:hover span { opacity: 1; }
+
+        /* ============================================================
+           SECCIÓN MAPA + CONTACTO
+        ============================================================ */
+        .seccion-mapa {
+            padding: 60px 0;
+            background: #f8faff;
+            margin-top: 20px;
+        }
+        .seccion-mapa .titulo-seccion {
+            margin-bottom: 30px;
+            color: var(--color-oscuro);
+            border-left: 5px solid var(--color-primario);
+            padding-left: 15px;
+        }
+        .mapa-contacto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .mapa-contacto-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Espacio reservado para el mapa */
+        .mapa-wrapper {
+            width: 100%;
+            height: 380px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            background: #e0e8f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #aac4f0;
+            position: relative;
+        }
+        /* ⬇️  AQUÍ PEGA TU IFRAME DE GOOGLE MAPS — solo reemplaza este div por tu <iframe> */
+        .mapa-placeholder-texto {
+            text-align: center;
+            color: #6e9fd1;
+            font-size: 0.95rem;
+            padding: 20px;
+        }
+        .mapa-placeholder-texto i {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--color-primario);
+        }
+
+        /* Info de contacto lateral */
+        .info-contacto-card {
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+        }
+        .info-contacto-card h3 {
+            font-size: 1.4rem;
+            color: var(--color-oscuro);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        .dato-contacto {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .dato-contacto:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .dato-contacto .icono-dato {
+            width: 42px; height: 42px;
+            background: #eef4ff;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--color-primario);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .dato-contacto .texto-dato p { margin: 0; font-size: 0.82rem; color: #999; }
+        .dato-contacto .texto-dato strong { font-size: 0.95rem; color: var(--color-oscuro); }
+        .dato-contacto a { color: var(--color-primario); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+
+        /* Botones de redes en la tarjeta de contacto */
+        .redes-contacto {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        .red-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .red-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
+        .red-btn.wa  { background: #25D366; }
+        .red-btn.ig  { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+        .red-btn.fb  { background: #1877F2; }
+
+        /* ============================================================
+           FOOTER — columna de redes sociales
+        ============================================================ */
+        .footer-redes {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .footer-red {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+        .footer-red:hover { transform: scale(1.2); }
+        .footer-red.wa { background: #25D366; }
+        .footer-red.ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+        .footer-red.fb { background: #1877F2; }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="IMG/LOGO.jpeg" alt="Polyglot Academy"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="logo-texto" style="display:none;">Polyglot Academy</span>
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html"><i class="fi fi-bs-login-lock"></i>Inicio</a></li>
+
+                    <li class="dropdown">
+                        <a href="#"><i class="fi fi-sr-customer-care"></i>Cursos ▾</a>
+                        <ul class="dropdown-content">
+                            <li><a href="#">Inglés</a></li>
+                            <li><a href="#">Francés</a></li>
+                            <li><a href="#">Alemán</a></li>
+                            <li><a href="#">Japonés</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="login.html" class="btn-login">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== BANNER PRINCIPAL ===== -->
+    <div class="swiper mainBanner">
+        <div class="swiper-wrapper">
+
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+                <a href="#" class="banner-link">
+                    <img src="IMG/banner 1.jpeg" alt="Slide 1">
+                    <div class="banner-content">
+                        <div class="text-box">
+                            <h1>Aprende un nuevo idioma</h1>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+                <a href="#" class="banner-link">
+                    <img src="IMG/BANNER 2.jpeg" alt="Slide 2">
+                    <div class="banner-content">
+                        <div class="text-box">
+                            <h1>Inglés, Francés, Alemán y más</h1>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+                <a href="#" class="banner-link">
+                    <img src="IMG/BANNER 3.jpeg" alt="Slide 3">
+                    <div class="banner-content">
+                        <div class="text-box">
+                            <h1>Inscripciones abiertas 2026</h1>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+                <a href="#" class="banner-link">
+                    <img src="IMG/BANNER 4.jpeg" alt="Slide 4">
+                    <div class="banner-content">
+                        <div class="text-box">
+                            <h1>Clases presenciales y en línea</h1>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="swiper-slide">
+                <a href="#" class="banner-link">
+                    <img src="IMG/BANNER 5.jpeg" alt="Slide 5">
+                    <div class="banner-content">
+                        <div class="text-box">
+                            <h1>Certificaciones internacionales</h1>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="swiper-slide">
+                <a href="#" class="banner-link">
+                    <img src="IMG/BANNER 6.jpeg" alt="Slide 6">
+                    <div class="banner-content">
+                        <div class="text-box">
+                            <h1>Tu futuro habla varios idiomas</h1>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- ===== MAIN ===== -->
+    <main class="container">
+
+        <div class="hero-intro">
+            <h1>Bienvenido a <span>Polyglot Academy</span></h1>
+            <p>Somos una escuela de idiomas comprometida con tu aprendizaje. Ofrecemos cursos de inglés, francés, alemán y japonés con metodología moderna y maestros certificados.</p>
+        </div>
+
+        <!-- SECCIÓN DE NOTICIAS Y EVENTOS -->
+        <section class="seccion-info">
+
+            <h2 class="titulo-seccion">Noticias Recientes</h2>
+            <div class="contenedor-dos">
+
+                <div class="cuadro cuadro-grande">
+                    <div class="imagen-placeholder">
+                        <img src="IMG/INSCRIPCIONES.jpg" alt="Nuevas inscripciones"
+                             onerror="this.parentElement.innerHTML='📰 aquí va la imagen';">
+                    </div>
+                    <span class="tag">Avisos</span>
+                    <h3>Periodo de Inscripciones 2026</h3>
+                    <p>Ya están abiertas las inscripciones para el nuevo ciclo escolar. Regístrate antes del 30 de mayo y obtén un descuento especial en tu primer mes.</p>
+                    <a href="#" class="leer-mas">Leer más</a>
+                </div>
+
+                <div class="cuadro cuadro-grande">
+                    <div class="imagen-placeholder">
+                        <img src="IMG/Exámenes Cambridge 2026.png" alt="Examen de certificación"
+                             onerror="this.parentElement.innerHTML='📰 aquí va la imagen';">
+                    </div>
+                    <span class="tag">Certificaciones</span>
+                    <h3>Exámenes Cambridge 2026</h3>
+                    <p>Preparamos a nuestros alumnos para los exámenes Cambridge B1, B2 y C1. Consulta las fechas disponibles y asegura tu lugar.</p>
+                    <a href="#" class="leer-mas">Leer más</a>
+                </div>
+
+            </div>
+
+            <h2 class="titulo-seccion">Próximos Eventos</h2>
+            <div class="contenedor-tres">
+
+                <div class="cuadro cuadro-pequeno">
+                    <div class="media-container">
+                        <img src="IMG/Taller de Conversación.jpg" alt="Taller de conversación"
+                             onerror="this.parentElement.innerHTML='🖼️ aquí va la imagen';">
+                    </div>
+                    <h4>Taller de Conversación</h4>
+                    <p class="fecha-evento">15 de Mayo - 10:00 AM</p>
+                </div>
+
+                <div class="cuadro cuadro-pequeno">
+                    <div class="media-container">
+                        <video controls>
+                            <source src="video/DEMO.mp4" type="video/mp4">
+                            Tu navegador no soporta videos.
+                        </video>
+                    </div>
+                    <h4>Clase Demo en Línea</h4>
+                    <p class="fecha-evento">20 de Mayo - 04:00 PM</p>
+                </div>
+
+                <div class="cuadro cuadro-pequeno">
+                    <div class="media-container">
+                        <img src="IMG/Reunión de Padres.jpg" alt="Reunión de padres"
+                             onerror="this.parentElement.innerHTML='🖼️ aquí va la imagen';">
+                    </div>
+                    <h4>Reunión de Padres</h4>
+                    <p class="fecha-evento">30 de Mayo - 09:00 AM</p>
+                </div>
+
+            </div>
+        </section>
+
+      
+
+             
+
+                <!-- TARJETA DE CONTACTO CON REDES SOCIALES -->
+                <div class="info-contacto-card">
+                    <h3>Contáctanos</h3>
+
+                    <div class="dato-contacto">
+                        <div class="icono-dato"><i class="fi fi-sr-marker"></i></div>
+                        <div class="texto-dato">
+                            <p>Dirección</p>
+                            <strong>Av. de los Idiomas 101, Villahermosa, Tabasco</strong>
+                        </div>
+                    </div>
+
+                    <div class="dato-contacto">
+                        <div class="icono-dato"><i class="fi fi-sr-phone-call"></i></div>
+                        <div class="texto-dato">
+                            <p>Teléfono / WhatsApp</p>
+                            <!-- ENLACE WHATSAPP con mensaje predeterminado -->
+                            <a href="https://wa.me/529331222364?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20Polyglot%20Academy."
+                               target="_blank">+52 933 122 2364</a>
+                        </div>
+                    </div>
+
+                    <div class="dato-contacto">
+                        <div class="icono-dato"><i class="fi fi-sr-envelope"></i></div>
+                        <div class="texto-dato">
+                            <p>Correo</p>
+                            <a href="mailto:info@polyglotacademy.mx">info@polyglotacademy.mx</a>
+                        </div>
+                    </div>
+
+                    <div class="dato-contacto">
+                        <div class="icono-dato"><i class="fi fi-sr-clock"></i></div>
+                        <div class="texto-dato">
+                            <p>Horario</p>
+                            <strong>Lun – Vie: 8:00 AM – 8:00 PM</strong>
+                        </div>
+                    </div>
+
+                    <!-- BOTONES DE REDES SOCIALES -->
+                    <div class="redes-contacto">
+                        <!-- WhatsApp con mensaje predeterminado -->
+                        <a class="red-btn wa"
+                           href="https://wa.me/529331222364?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20Polyglot%20Academy."
+                           target="_blank">
+                            <i class="fi fi-sr-comment-alt"></i> WhatsApp
+                        </a>
+                        <!-- Instagram — reemplaza TU_USUARIO por tu usuario real -->
+                        <a class="red-btn ig"
+                           href="https://www.instagram.com/polyglot.academy1?igsh=MXYwMWlwOWtoa213NA=="
+                           target="_blank">
+                            <i class="fi fi-sr-camera"></i> Instagram
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <p>📍 Av. de los Idiomas 101, Villahermosa</p>
+                    <p>📞 +52 933 122 2364</p>
+                    <p>✉️ info@polyglotacademy.mx</p>
+                    <!-- Redes sociales en el footer -->
+                    <div class="footer-redes">
+                        <a class="footer-red wa"
+                           href="https://wa.me/529331222364?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20Polyglot%20Academy."
+                           target="_blank" title="WhatsApp">
+                            <i class="fi fi-sr-comment-alt"></i>
+                        </a>
+                        <a class="footer-red ig"
+                           href="https://www.instagram.com/polyglot.academy1?igsh=MXYwMWlwOWtoa213NA=="
+                           target="_blank" title="Instagram">
+                            <i class="fi fi-sr-camera"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Ubicación</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3786.028294113692!2d-93.21983602511011!3d18.39156337310288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ee8cd7cc8ce477%3A0xe16984e99de48f21!2sPreparatoria%20Augusto%20Hern%C3%A1ndez%20Oliv%C3%A9!5e0!3m2!1ses-419!2smx!4v1779336535635!5m2!1ses-419!2smx" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <p>Villahermosa, Tabasco</p>
+                    <p>México, CP 86000</p>
+                    <a href="https://www.google.com/maps" target="_blank">Ver en Google Maps</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="mailto:info@polyglotacademy.mx">Envíanos un correo</a></li>
+                        <li><a href="https://wa.me/529331222364?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20Polyglot%20Academy." target="_blank">Escríbenos por WhatsApp</a></li>
+                        <li><a href="https://www.instagram.com/polyglot.academy1?igsh=MXYwMWlwOWtoa213NA==" target="_blank">Síguenos en Instagram</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Polyglot Academy. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+         BOTONES FLOTANTES DE REDES SOCIALES
+    ============================================================ -->
+    <div class="redes-flotantes">
+        <!-- WhatsApp flotante con mensaje predeterminado -->
+        <a class="btn-flotante btn-whatsapp"
+           href="https://wa.me/529331222364?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20Polyglot%20Academy."
+           target="_blank" title="WhatsApp">
+            <span>Escríbenos</span>
+            <i class="fi fi-sr-comment-alt"></i>
+        </a>
+        <!-- Instagram flotante -->
+        <a class="btn-flotante btn-instagram"
+           href="https://www.instagram.com/polyglot.academy1?igsh=MXYwMWlwOWtoa213NA=="
+           target="_blank" title="Instagram">
+            <span>Síguenos</span>
+            <i class="fi fi-sr-camera"></i>
+        </a>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="banner.js"></script>
+
+</body>
+</html>
