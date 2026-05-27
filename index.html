@@ -628,7 +628,19 @@
                         <li><a href="https://www.instagram.com/polyglot.academy1?igsh=MXYwMWlwOWtoa213NA==" target="_blank">Síguenos en Instagram</a></li>
                     </ul>
                 </div>
+<script>
+let visitas = localStorage.getItem("visitas");
 
+if(visitas == null){
+    visitas = 0;
+}
+
+visitas++;
+
+localStorage.setItem("visitas", visitas);
+
+document.write("Visitas: " + visitas);
+</script>
             </div>
             <div class="footer-bottom">
                 &copy; 2026 Polyglot Academy. Todos los derechos reservados.
